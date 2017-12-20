@@ -2,6 +2,7 @@
 {
     public enum Sex { Male, Female }
     public enum Vocation { Knight, Paladin, Druid, Sorcerer, Elite_Knight, Royal_Paladin, Elder_Druid, Master_Sorcerer }
+    public enum Status { Offline, Online }
 
     public static class EnumExtensions
     {

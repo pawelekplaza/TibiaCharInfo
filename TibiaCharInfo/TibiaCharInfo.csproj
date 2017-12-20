@@ -75,6 +75,8 @@
     <Compile Include="Models\Date.cs" />
     <Compile Include="Models\Death.cs" />
     <Compile Include="Models\Enums.cs" />
+    <Compile Include="Models\HighscoreData.cs" />
+    <Compile Include="Models\Highscores.cs" />
     <Compile Include="Models\Involved.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

@@ -8,5 +8,7 @@
         public int Level { get; set; }
         public int AchievementPoints { get; set; }
         public string World { get; set; }
+        public string Residence { get; set; }
+        public Character MarriedTo { get; set; }
     }
 }
