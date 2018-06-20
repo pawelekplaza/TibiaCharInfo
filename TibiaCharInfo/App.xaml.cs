@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using TibiaCharInfo.Services;
 
 namespace TibiaCharInfo
 {
@@ -13,5 +14,9 @@ namespace TibiaCharInfo
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            ServicesStorage.RegisterServices();
+        }
     }
 }

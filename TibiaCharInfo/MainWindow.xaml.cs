@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TibiaCharInfo.Helpers;
 
 namespace TibiaCharInfo
 {
@@ -23,6 +24,7 @@ namespace TibiaCharInfo
         public MainWindow()
         {
             InitializeComponent();
+            Loaded += (s, e) => PagesManager.Initialize(this);
         }
     }
 }
