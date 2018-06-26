@@ -1,13 +1,16 @@
 ﻿using System.Threading.Tasks;
 using TibiaCharInfo.Models;
+using TibiaCharInfo.Responses;
 
 namespace TibiaCharInfo.Services
 {
-    public class CharacterService : ICharacterService
+    public class CharacterService : ServiceBase, ICharacterService
     {
-        public Task<Character> Get(string uri)
+        private readonly string _baseUri = @"characters/";
+        public async Task<Character> Get(string characterName)
         {
-            throw new System.NotImplementedException();
+            var response = await GetResponse($"{ _baseUri }{ characterName.Replace(' ', '+') }.json");
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<CharacterResponse>(response).Characters;
         }
     }
 }

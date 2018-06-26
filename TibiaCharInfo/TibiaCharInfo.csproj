@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -54,15 +57,27 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controllers\CharacterController.cs" />
+    <Compile Include="Controllers\HighscoreController.cs" />
+    <Compile Include="JsonConverters\SpaceToUnderscoreConverter.cs" />
+    <Compile Include="Models\OtherCharacter.cs" />
     <Compile Include="Pages\CharacterPage.xaml.cs">
       <DependentUpon>CharacterPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\HighscorePage.xaml.cs">
+      <DependentUpon>HighscorePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Responses\CharacterResponse.cs" />
+    <Compile Include="Responses\HighscoreResponse.cs" />
+    <Compile Include="Responses\Information.cs" />
     <Compile Include="Services\CharacterService.cs" />
+    <Compile Include="Services\HighscoreService.cs" />
     <Compile Include="Services\ICharacterService.cs" />
+    <Compile Include="Services\IHighscoreService.cs" />
     <Compile Include="Services\IServiceBase.cs" />
+    <Compile Include="Services\ServiceBase.cs" />
     <Compile Include="Services\ServicesContainer.cs" />
     <Compile Include="Services\ServicesStorage.cs" />
-    <Compile Include="ViewModels\CharacterViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -81,13 +96,17 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\HighscorePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\AccountInformation.cs" />
     <Compile Include="Models\Achievement.cs" />
     <Compile Include="Models\Character.cs" />
     <Compile Include="Models\CharacterData.cs" />
-    <Compile Include="Models\Date.cs" />
+    <Compile Include="Models\DateFormat.cs" />
     <Compile Include="Models\Death.cs" />
     <Compile Include="Models\Enums.cs" />
     <Compile Include="Models\HighscoreData.cs" />
@@ -111,6 +130,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

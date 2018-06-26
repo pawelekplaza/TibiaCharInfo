@@ -12,7 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TibiaCharInfo.Controllers;
 using TibiaCharInfo.Helpers;
+using TibiaCharInfo.Models;
 
 namespace TibiaCharInfo
 {
@@ -24,7 +26,21 @@ namespace TibiaCharInfo
         public MainWindow()
         {
             InitializeComponent();
-            Loaded += (s, e) => PagesManager.Initialize(this);
+            Loaded += (s, e) =>
+            {
+                PagesManager.Initialize(this);
+            };
+        }
+
+        public async void ShowSomePage()
+        {
+            var highscoreController = new HighscoreController();
+            PagesManager.Show(PageId.Highscore, await highscoreController.GetHighscore("Vunira"));
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ShowSomePage();
         }
     }
 }

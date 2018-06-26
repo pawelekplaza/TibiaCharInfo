@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace TibiaCharInfo.Models
 {
@@ -7,8 +8,10 @@ namespace TibiaCharInfo.Models
         public CharacterData Data { get; set; }
         public ICollection<Achievement> Achievements { get; set; }
         public ICollection<Death> Deaths { get; set; }
+        [JsonProperty(PropertyName = "account_information")]
         public AccountInformation AccountInformation { get; set; }
-        public ICollection<Character> OtherCharacters { get; set; }
+        [JsonProperty(PropertyName = "other_characters")]
+        public ICollection<OtherCharacter> OtherCharacters { get; set; }
         public Status Status { get; set; }
     }
 }

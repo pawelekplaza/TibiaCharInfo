@@ -1,8 +1,11 @@
-﻿namespace TibiaCharInfo.Models
+﻿using Newtonsoft.Json;
+
+namespace TibiaCharInfo.Models
 {
     public class AccountInformation
     {
-        public string LoyalityTitle { get; set; }
-        public Date Created { get; set; }
+        [JsonProperty(PropertyName = "loyalty_title")]
+        public string LoyaltyTitle { get; set; }
+        public DateFormat Created { get; set; }
     }
 }

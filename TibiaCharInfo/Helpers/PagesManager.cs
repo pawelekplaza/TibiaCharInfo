@@ -3,6 +3,7 @@ using TibiaCharInfo.Pages;
 using System.Linq;
 using TibiaCharInfo.ViewModels;
 using TibiaCharInfo.Models;
+using System;
 
 namespace TibiaCharInfo.Helpers
 {
@@ -19,9 +20,9 @@ namespace TibiaCharInfo.Helpers
             _pagesCache = new Dictionary<PageId, PageBase>();
         }
 
-        public static void Show(PageBase page, object viewModel = null)
+        public static void Show(PageId pageId, object viewModel = null)
         {
-            AddToPagesCache(page);
+            var page = GetPage(pageId);
             _window.mainFrame.Navigate(page);
 
             if (viewModel != null)
@@ -42,11 +43,39 @@ namespace TibiaCharInfo.Helpers
             Show(PagesStack.Last());
         }
 
+        private static void Show(PageBase page)
+        {
+            _window.mainFrame.Navigate(page);
+            PagesStack.Add(page);
+        }
+
         private static void AddToPagesCache(PageBase page)
         {
             if (_pagesCache.ContainsKey(page.PageId))
                 return;
             _pagesCache.Add(page.PageId, page);
+        }
+
+        private static PageBase GetPage(PageId pageId)
+        {
+            if (_pagesCache.ContainsKey(pageId))
+                return _pagesCache[pageId];
+
+            var page = GetCorrectPageBase(pageId);
+            AddToPagesCache(page);
+            return page;
+        }
+
+        private static PageBase GetCorrectPageBase(PageId pageId)
+        {
+            switch (pageId)
+            {
+                case PageId.Base: return new PageBase();
+                case PageId.Character: return new CharacterPage();
+                case PageId.Highscore: return new HighscorePage();
+                default:
+                    throw new NotImplementedException($"Page with id '{ pageId }' not found.");
+            }
         }
     }
 }

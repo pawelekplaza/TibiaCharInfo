@@ -4,6 +4,5 @@ namespace TibiaCharInfo.Services
 {
     interface ICharacterService : IServiceBase<Character>
     {
-
     }
 }

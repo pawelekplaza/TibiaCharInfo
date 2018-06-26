@@ -7,6 +7,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
         <Frame x:Name="mainFrame" NavigationUIVisibility="Hidden"/>
+        <Button Content="Show something" Click="Button_Click" Grid.Row="1"/>
     </Grid>
 </Window>

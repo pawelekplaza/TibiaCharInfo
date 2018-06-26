@@ -19,7 +19,7 @@ namespace TibiaCharInfo.Services
         public static void RegisterServices()
         {
             Register<ICharacterService, CharacterService>();
-            Register<ICharacterService, CharacterService>();
+            Register<IHighscoreService, HighscoreService>();
         }
 
         private static void Register<Interface, TConcrete>()    where TConcrete : new()
